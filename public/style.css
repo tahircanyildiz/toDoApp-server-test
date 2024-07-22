@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    height: fit-content;
+    padding: 20px;
+    margin:10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    margin: 8px;
+    padding: 15px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+}
+
+button {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+
+span {  /* kayıt ol giriş yap yazıları için */
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.logout-btn {  /* çıkış yap butonu işlemleri */
+    background-color: #c6bcbc;
+    border-radius: 25px;
+    padding: 10px;
+    position:fixed;
+    top: 5px;
+    right: 10px;
+
+  
+}
+.logout-btn:hover{   /* buton üstüne gelince olacak olan işlemler */
+    background-color: red;
+    color:yellow;
+}
+
+
+
+
+.todo-container {  /* todo container kısmı */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+    top: 50%;
+    left: 50%;
+}
+
+.todo-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+ 
+}
+
+.todo-input button {   /* ekle butonu */
+    padding: 15px 25px;
+    background-color: #28a745;
+    border-radius: 25px;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.todo-item {   /* todo list kısmı   */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item p {
+    flex: 1;
+    margin: 0;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.todo-item button.update-btn {
+    color: #18bd1e;
+    border-radius: 70px;
+}
+
+.todo-item button.delete-btn {
+    color: #ee041b;
+}
+
+
+.todo-item .btn-container button {
+    border: none;
+    background: none;
+}
+
+.todo-item .status-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
