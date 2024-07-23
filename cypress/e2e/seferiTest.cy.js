@@ -12,7 +12,7 @@ describe('Seferi Test', () => {
     ];
      it('Rota hesapla', () => {
 
-        cy.visit("http://router.siriusaitech.com/?routeId=20e5b8b3-9447-4cae-a474-48b8d4ad84a2&accessKey=us-GJ8VOG5H753KGC821QEMEEJJOMJOPAOR");
+        cy.visit("URL");
         
         cy.viewport('macbook-15')
         
@@ -25,7 +25,7 @@ describe('Seferi Test', () => {
        cy.get('.pac-item').first().click();
        
 
-      // clearing intermediate stops
+      // clearing intermediate cities
        cy.get('body').then($body => {
         if ($body.find('.text-base').length > 0) {
             
