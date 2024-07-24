@@ -83,14 +83,18 @@ describe('Seferi Test', () => {
         'Osmaniye': ['Bahçe', 'Düziçi', 'Hasanbeyli', 'Kadirli', 'Sumbas'],
         'Düzce': ['Akçakoca', 'Cumayeri', 'Çilimli', 'Gölyaka', 'Gümüşova']
     };
+
     const vehicleTypes = ["Tır", "Kamyon / Kırkayak", "Kamyonet", "Minivan"];
+    const routeTypes = ["EN HIZLI", "EN KISA"];
     it('Rota hesapla', () => {
 
-        cy.visit("url");
+        
+
+        cy.visit("http://router.siriusaitech.com/?routeId=20e5b8b3-9447-4cae-a474-48b8d4ad84a2&accessKey=us-GJ8VOG5H753KGC821QEMEEJJOMJOPAOR");
 
         cy.viewport('macbook-15')
         cy.wait(500);
-        for (let k = 0; k < 5; k++) {
+        for (let k = 0; k < 10; k++) {
             cy.get('div#app button[type="button"]:nth-child(1) > button').click();
 
             // random starting city
@@ -123,9 +127,9 @@ describe('Seferi Test', () => {
                 const selectedIntermediateDistrict = Cypress._.sample(cities[selectedIntermediateCity]);
                 cy.get('.w-full > #to').last().click().type(`${selectedIntermediateCity}, ${selectedIntermediateDistrict}`);
                 cy.get('.pac-item', { timeout: 2000 })
-                .should('be.visible')
-                .first()
-                .click();
+                    .should('be.visible')
+                    .first()
+                    .click();
                 cy.wait(500);
 
             }
@@ -154,17 +158,32 @@ describe('Seferi Test', () => {
             }
 
             vehicleTypes.forEach(type => {
-                cy.get('div#radix-vue-tabs-11-content-general button[type="button"]:nth-child(14)')
+                cy.get(`button[role='combobox'][type='button'][aria-controls='radix-vue-select-content-18']`)
                     .should('be.visible')
                     .click();
+
 
                 cy.get('div[role="group"]').contains(type).click();
                 cy.wait(500);
 
                 cy.get('.gap-3 > .justify-center').should('be.visible').click();
-
                 cy.wait('@calculate');
+                routeTypes.forEach(routeType=>{
+                    cy.get(`button[role='combobox'][type='button'][aria-controls='radix-vue-select-content-17']`).should('be.visible').click();
+                    cy.get('div[role="group"]').contains(routeType).click();
+                cy.wait(500);
+                 cy.get('.gap-3 > .justify-center').should('be.visible').click();
+                cy.wait('@calculate');
+                });       
             });
+
+             routeTypes.forEach(routeType=>{
+                    cy.get(`button[role='combobox'][type='button'][aria-controls='radix-vue-select-content-17']`).should('be.visible').click();
+                    cy.get('div[role="group"]').contains(routeType).click();
+                cy.wait(500);
+                 cy.get('.gap-3 > .justify-center').should('be.visible').click();
+                cy.wait('@calculate');
+                }); 
         }
 
     });
