@@ -90,7 +90,7 @@ describe('Seferi Test', () => {
 
         
 
-        cy.visit("http://router.siriusaitech.com/?routeId=20e5b8b3-9447-4cae-a474-48b8d4ad84a2&accessKey=us-GJ8VOG5H753KGC821QEMEEJJOMJOPAOR");
+        cy.visit("url");
 
         cy.viewport('macbook-15')
         cy.wait(500);
