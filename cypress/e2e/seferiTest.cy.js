@@ -98,7 +98,10 @@ describe('Seferi Test', () => {
             const selectedFromDistrict = Cypress._.sample(cities[selectedFromCity]);
             cy.get('input#from').click().clear().type(`${selectedFromCity}, ${selectedFromDistrict}`);
             cy.wait(500);
-            cy.get('.pac-item').first().click();
+            cy.get('.pac-item', { timeout: 2000 })
+                .should('be.visible')
+                .first()
+                .click();
 
 
             // clearing intermediate cities
@@ -119,7 +122,10 @@ describe('Seferi Test', () => {
                 const selectedIntermediateCity = Cypress._.sample(Object.keys(cities));
                 const selectedIntermediateDistrict = Cypress._.sample(cities[selectedIntermediateCity]);
                 cy.get('.w-full > #to').last().click().type(`${selectedIntermediateCity}, ${selectedIntermediateDistrict}`);
-                cy.get('.pac-item').first().click();
+                cy.get('.pac-item', { timeout: 2000 })
+                .should('be.visible')
+                .first()
+                .click();
                 cy.wait(500);
 
             }
@@ -130,7 +136,10 @@ describe('Seferi Test', () => {
             cy.get('input[placeholder="Varış Noktası"]').click().clear().type(`${selectedToCity}, ${selectedToDistrict}`);
             cy.wait(500);
 
-            cy.get('.pac-item').first().click();
+            cy.get('.pac-item', { timeout: 2000 })
+                .should('be.visible')
+                .first()
+                .click();
             cy.get('.mt-auto').click();
             cy.intercept('POST', '**/generate', (req) => {
                 req.reply((res) => {
